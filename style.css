@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#inputField {
+    width: 80%;
+    padding: 10px;
+    font-size: 18px;
+}
+
+#letters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#lang {
+    margin-bottom: 15px;
+}
