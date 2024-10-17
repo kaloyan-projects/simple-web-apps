@@ -11,6 +11,8 @@ const langlabel = document.getElementById("langlabel");
 var usedLetters = 0;
 var inputText = "";
 var allLetters = 22;
+var langcode = '';
+var translation = {};
 
 // Translations
 const translations = {
@@ -18,7 +20,7 @@ const translations = {
         title : "Pangram Helper",
         input_placeholder : "Enter your sentence…",
         alphabet : "abcdefghijklmnopqrstuvwxyz",
-        counter : () => `Used: 0/${allLetters} letters`,
+        counter : () => `Used: ${usedLetters}/${allLetters} letters`,
         sen_length : () => `Length: ${inputText.length} letters`,
         langlabel_text : "Language: "
     },
@@ -26,9 +28,49 @@ const translations = {
         title : "Помощник за Панграми",
         input_placeholder : "Въведете вашето изречение…",
         alphabet : "абвгдежзийклмнопрстуфхцчшщъьюя",
-        counter : () => `Използвани: 0/${allLetters} букви`,
+        counter : () => `Използвани: ${usedLetters}/${allLetters} букви`,
         sen_length : () => `Дължина: ${inputText.length} букви`,
         langlabel_text : "Език: "
+    },
+    de : {
+        title : "Pangram-Helfer",
+        input_placeholder : "Geben Sie Ihren Satz ein…",
+        alphabet : "abcdefghijklmnopqrstuvwxyzäöüß",
+        counter : () => `Verwendet: ${usedLetters}/${allLetters} Buchstaben`,
+        sen_length : () => `Länge: ${inputText.length} Buchstaben`,
+        langlabel_text : "Sprache: "
+    },
+    ru : {
+        title : "Панграм-помощник",
+        input_placeholder : "Введите свое предложение…",
+        alphabet : "абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
+        counter : () => `Использованные: ${usedLetters}/${allLetters} букв`,
+        sen_length : () => `Длина: ${inputText.length} букв`,
+        langlabel_text : "Язык: "
+    },
+    es : {
+        title : "Ayudante de Pangrama",
+        input_placeholder : "Introduce tu frase…",
+        alphabet : "abcdefghijklmnñopqrstuvwxyz",
+        counter : () => `${usedLetters}/${allLetters} letras utilizadas`,
+        sen_length : () => `Longitud: ${inputText.length} letras`,
+        langlabel_text : "Idioma: "
+    },
+    gr : {
+        title : "Βοηθός πάγκραμ",
+        input_placeholder : "Εισαγάγετε τη φράση σας…",
+        alphabet : "αβγδεζηθικλμνξοπρστυφχψω",
+        counter : () => `Χρησιμοποιούνται: ${usedLetters}/${allLetters} γράμματα`,
+        sen_length : () => `Μήκος: ${inputText.length} γράμματα`,
+        langlabel_text : "Γλώσσα: "
+    },
+    no : {
+        title : "Pangram hjelper",
+        input_placeholder : "Skriv inn setningen din…",
+        alphabet : "abcdefghijklmnopqrstuvwxyzæøå",
+        counter : () => `${usedLetters}/${allLetters} bokstaver brukt`,
+        sen_length : () => `Lengde: ${inputText.length} bokstaver`,
+        langlabel_text : "Språk: "
     }
 };
 
@@ -46,7 +88,6 @@ update_on_lang_change("en");
 function update_on_lang_change(lang) {
 
     changesMade = true;
-
     // Get translations for language
     translation = translations[lang];
     allLetters = translation.alphabet.length;
@@ -66,9 +107,8 @@ function update_on_lang_change(lang) {
         lettersContainer.appendChild(letterButton);
     }
 
-    // Change info
+    // Update stats
     counter.innerHTML = translation.counter();
-    //console.log(translation.counter);
     sentenceLength.innerHTML = translation.sen_length();
 
     // Focus on field
@@ -78,7 +118,7 @@ function update_on_lang_change(lang) {
 
 languageSelect.addEventListener('change', function() {
     console.log(this.value);
-    update_on_lang_change(this.value);
+    update_on_lang_change(this.value, false);
 });
 
 Number.prototype.clamp = function(min, max) {
@@ -89,7 +129,7 @@ Number.prototype.clamp = function(min, max) {
 inputField.addEventListener('input', () => {
     usedLetters = 0;
     changesMade = true;
-    inputText = inputField.value.toLowerCase().replace(/[^a-zа-я]/g, '');
+    inputText = inputField.value.toLowerCase().replace(/[^\p{L}]/gu, '');
     const letterButtons = document.querySelectorAll('.letter');
 
     letterButtons.forEach(letterButton => {
@@ -110,7 +150,7 @@ inputField.addEventListener('input', () => {
         }
     });
 
-    counter.innerHTML = "Used: " + usedLetters + "/" + translation.alphabet.length + " letters.";
-    sentenceLength.innerHTML = "Length: " + inputText.length + " letters.";
+    counter.innerHTML = translation.counter();
+    sentenceLength.innerHTML = translation.sen_length();
     usedLetters = 0;
 });
