@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+		* {
+			font-family: sans-serif;
+		}
+		#clokc {
+			color: #fafafa;
+			font-size: 48px;
+			text-align: center;
+			position: absolute;
+    		top:  50%;
+    		left: 50%;
+    		transform: translate(-50%,-50%);
+		}
+		body {
+			background-color: #101010;
+		}
+	</style>
+</head>
+<body onload="timedsp()">
+	<div id="clokc"></div>
+	<script>
+		clok = document.getElementById("clokc");
+		function timedsp() {
+			nof = new Date();
+			time = `${nof.getDate().toString().padStart(2, "0")}.${nof.getMonth().toString().padStart(2, "0")}.${nof.getFullYear()}&nbsp${nof.getHours().toString().padStart(2, "0")}:${nof.getMinutes().toString().padStart(2, "0")}:${nof.getSeconds().toString().padStart(2, "0")}.${nof.getMilliseconds().toString().padStart(3, "0")}`
+			clok.innerHTML = time;
+			setTimeout(timedsp, 10);
+		}
+	</script>
+</body>
+</html>
