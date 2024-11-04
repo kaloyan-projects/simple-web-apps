@@ -17,10 +17,10 @@ function check_for_palendrome() {
     reversed.innerHTML = "Reversed text: " + reverse_s(text);
     var text = text.toLowerCase().replace(/[^\p{L}]/gu, '');
     if (text == reverse_s(text) && text.length != 0) {
-        message.innerHTML = "This is a palendrome.";
+        message.innerHTML = "This is a palindrome.";
         message.style.color = "green";
     } else {
-        message.innerHTML = "This is not a palendrome.";
+        message.innerHTML = "This is not a palindrome.";
         message.style.color = "red";
     }
 
