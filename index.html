@@ -1,22 +1,17 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<style>
-		* {
-			font-family: sans-serif;
-		}
-	</style>
-	<title>Simple web apps</title>
-</head>
-<body>
-	<h1>Simple web apps</h1>
-	<p>List of simple web applications using HTML, CSS and JavaScript that run in your browser.</p>
-	<ol>
-		<li><a href="PangramTool/index.html">Pangram Helper</a></li>
-		<li><a href="PalindromeTool/index.html">Palindrome Helper</a></li>
-		<li><a href="Clock/index.html">Clock</a></li>
-	</ol>
-</body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Unicode Offset Tool</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Unicode Offset Tool</h1>
+        <p><i>Type text in the field, specify an offset, and see what Unicode characters lie just a little further…</i></p>
+        <textarea id="inputText" placeholder="Enter text…"></textarea><br>
+        <input type="number" id="offset" placeholder="Enter offset…" />
+        <div id="output">Output</div>
+        <script src="scripts.js"></script>
+    </body>
 </html>

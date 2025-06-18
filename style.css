@@ -1,0 +1,27 @@
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 4px solid #ccc;
+            box-shadow: 0 0 5px #aaa;
+            border-radius: 5px;
+            max-width: 600px;
+            overflow: hidden;
+        }
+        input, textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            max-width: 90%;
+        }
+        #output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+            min-height: 50px;
+            max-width: 90%;
+            word-wrap: break-word; /* Allows long words to be broken and wrap onto the next line */
+            overflow-wrap: break-word; /* Ensures that the text wraps correctly */
+            white-space: normal;
+        }
